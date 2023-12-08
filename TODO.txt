@@ -1,0 +1,17 @@
+tc39.es {visit}
+alert in console
+
+why console.log(typeof NaN);return number but NaN is Not a number 
+where console.log(typeof null) return obj 
+
+why const bigIntvalue= 165446545634564535n need n at end
+
+what is  string interPolation
+
+diffrence betwn const number =new  Number(400) // [Number: 400]
+                const number =Number(400) // 400
+
+how to destructur array
+
+
+rest vs spread operator 
