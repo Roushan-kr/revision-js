@@ -28,6 +28,6 @@ const url ="http://rj.dev/clicl%20To%20Signin"
 console.log(url.replace("%20"," ")); // first occurence 
 console.log(url.replaceAll("%20"," ")); // all occurence 
 
-console.log(url.includes("rj")); // boll 
+console.log(url.includes("rj")); // bool 
 console.log(url.split("/")); // form array 
 

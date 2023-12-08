@@ -35,7 +35,7 @@ const map = new Map(); // use NaN as a Map key
 map.set("IN", "india");
 map.set("US", "United States");
 map.set("FR", "France");
-map.set("FR", "France");
+map.set("FR", "France"); // dublicate key get update value
 
 map.forEach((contry) => console.log(contry));
 console.log(map);

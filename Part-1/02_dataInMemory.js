@@ -9,7 +9,7 @@
 // obj ,array, function
 
 
-// now declearing some dataType {default for non assigned value unefiined }
+// now declearing some dataType {default for non assigned value undefined }
 // symbol :- provide unique value each time even same value enterd
 const id= Symbol("string/Num Any")
 const id2= Symbol("string/Num Any")
