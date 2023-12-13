@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Leaning</title>
+  </head>
+  <style>
+    .bg-black {
+      color: #fff;
+      background-color: #141414;
+    }
+    .d-none {
+      display: none;
+    }
+    .d-flex{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+  </style>
+  <body class="bg-black d-flex">
+    window->document->html-> head(->metaData->artibute +title->text
+    node)+body(->html objects)
+    <div class="conatainer" id="box">
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing<spam class="d-none"
+          >this is hide</spam
+        >
+        elit.
+      </p>
+      <ul>
+        <li class="nav-iteam">home</li>
+        <li class="nav-iteam">contact</li>
+        <li class="nav-iteam">about</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    const box = document.getElementById("box");
+    console.log(box.innerHTML); // return html element and support html manuplation
+    console.log(box.innerText); // doesnot return hide content
+    console.log(box.textContent); // return only text constent in this
+    console.log(box.className); // return a direct overwriten value (internal js use className instide Class)
+    console.log(box.classList); // DOMTokenList
+    console.log(box.getAttribute("id"));
+    console.log(box.setAttribute("id", "box2")); //always overWrites its value
+    box.style.backgroundColor = "green";
+    //    box.style.display="inline"
+    box.style.padding = "10px";
+    console.log(document.querySelector("#box"))
+    console.log(document.querySelector(".container"))
+    console.log(document.querySelector("input[type='password']"))
+    console.log(document.querySelector("h1:first-child"))
+    document.querySelector("li:nth-child(even)").style.color="orange"
+    document.querySelector("div>p").style.color="orange"
+
+    document.querySelectorAll("li").forEach((node)=>node.style.backgroundColor="blue") // its a nodelist not any array only have forEach loop
+    console.log(document.getElementsByClassName("nav-iteam"))  // HtmlCollection not even able to use forEach
+  </script>
+</html>

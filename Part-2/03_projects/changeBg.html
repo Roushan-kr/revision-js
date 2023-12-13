@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change collor By Click</title>
+  </head>
+  <style>
+    .bg-confort {
+      background-color: #141414;
+      color: #fff;
+    }
+    .d-flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50vh;
+      flex-direction: column;
+      padding: 15px;
+    }
+    .m-2 {
+      margin: 4px;
+    }
+    span {
+      width: 100px;
+      height: 100px;
+      border: 3px solid red;
+      margin: 4px;
+    }
+
+    .colorBox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      padding: 15px;
+    }
+  </style>
+  <body class="bg-confort">
+    <div class="colorBox">
+      <span id="green">gren</span>
+      <span id="red">red</span>
+      <span id="blue">blue</span>
+      <span id="black">black</span>
+    </div>
+    <div class="d-flex">
+      <input type="text" placeholder="Enter HexColor Formet" />
+      <button type="submit" class="m-2">Change Now</button>
+    </div>
+  </body>
+  <script>
+    const button = document.querySelector("button");
+    const input = document.querySelector("input[type=text]");
+    button.addEventListener("click", () => {
+      document.body.style.backgroundColor = `#${input.value}`;
+    });
+
+    (function () {
+      const span = document.querySelectorAll("span");
+      span.forEach((spanCell) => {
+        spanCell.style.backgroundColor = spanCell.id;
+        spanCell.addEventListener("click", () => {
+          document.body.style.backgroundColor = spanCell.id;
+        });
+      });
+    })();
+  </script>
+</html>

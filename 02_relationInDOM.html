@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM relation</title>
+</head>
+<style>
+    .d-confort{
+        background-color: #121212;
+        color: #fff;
+    }
+</style>
+<body class="d-confort">
+    <div class="parent">
+        <div class="day">monday</div>
+        <div class="day">tuesday</div>
+        <div class="day">wednesday</div>
+        <div class="day">thursday</div>
+    </div>
+</body>
+<script>
+    const patrent = document.querySelector(".parent")
+    console.log(patrent.children); // returns a HTMlCollection
+    // every element must have some childern dfault
+    for (let i = 0; i < patrent.children.length; i++) {
+        const element = patrent.children[i];
+        element.style.color="green"
+    }
+
+    // parent to child traversal
+    console.log(parent.firstElementChild)
+    console.log(parent.lastElementChild)
+    // child to parent traversal 
+    const child =document.querySelector(".day")
+    console.log(child.parentElement);
+    console.log(child.nextElementSibling);
+
+    console.log(patrent.childNodes); // also coud nearby node (space+extra) /? all node 
+
+
+// creating a htmlElement and insrting to DOM
+
+const div = document.createElement("div")
+div.id="div-id"
+div.className="div-className"
+div.innerText="div-innerText"
+div.setAttribute("title","div-title") // direclty add this artibute to it not by treversing like above and withOut Rewriting
+document.body.appendChild(div)
+
+// using in optimise way
+function addlang(langName) {
+    const li = document.createElement("li")
+    li.appendChild(document.createTextNode(langName))
+    patrent.appendChild(li)
+}
+addlang("python")
+
+// replacing one node to other 
+const div2 =document.createElement("div")
+div2.textContent="help me day"
+document.querySelector("div:nth-child(2)").replaceWith(div2)
+
+// removing a node
+const lastDiv = document.querySelector("div:last-child")
+lastDiv.remove()
+</script>
+</html>

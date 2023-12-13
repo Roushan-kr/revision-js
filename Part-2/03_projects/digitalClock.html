@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital clock</title>
+</head>
+<style>
+    .bg-confort {
+      background-color: #141414;
+      color: #fff;
+    }
+    .d-flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50vh;
+      flex-direction: column;
+      padding: 15px;
+    }
+    .m-2 {
+      margin: 4px;
+    }
+    span{
+        width: 75px;
+        height: 25px;
+        background-color: orange;
+        border-radius: 8px;
+        padding: 5px;
+    }
+    .text-center {
+      text-align: center;
+    }
+</style>
+<body class="bg-confort text-center">
+    <div class="clock d-flex">
+        <p>Time:</p>
+        <span>12:12</span>
+
+    </div>
+    
+</body>
+<script>
+    const timeDisp =document.querySelector("span")
+    setInterval(function () {
+        const currentTime = new Date().toLocaleTimeString()
+        timeDisp.textContent= currentTime
+    },1000)
+</script>
+</html>

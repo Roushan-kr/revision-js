@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gess The Number</title>
+  </head>
+  <style>
+    .bg-confort {
+      background-color: #141414;
+      color: #fff;
+    }
+    .d-flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50vh;
+      flex-direction: column;
+      padding: 15px;
+    }
+    .m-2 {
+      margin: 4px;
+    }
+  </style>
+  <body class="d-flex bg-confort">
+    <h1>Gess The Number b/w 1 to 100</h1>
+    <div class="gess d-flex">
+      <span>You have 10 atempt to Gess the Number</span>
+      <h3>Gess A number</h3>
+      <form>
+        <input type="number" name="gessNumber" id="Gnum" />
+        <input type="submit" value="Submit Gess" />
+      </form>
+      <p>Preveous Gess: <span id="prevGess">Empty</span></p>
+      <p>Gess Remaninig: <span id="gessRem">10</span></p>
+      <p class="overview"></p>
+    </div>
+  </body>
+  <script>
+    let NumToGess = Math.floor(Math.random() * 100 + 1);
+    const gessRem = document.querySelector("#gessRem");
+    const gessNum = document.querySelectorAll("input")[0];
+    const submit = document.querySelectorAll("input")[1];
+    let prevGess = [];
+    let PlayGame = true;
+
+    if (PlayGame) {
+      submit.addEventListener("click", (e) => {
+        e.preventDefault();
+        const gess = parseInt(gessNum.value);
+
+        if (validateresult(gess)) {
+          checkResult(gess);
+        }
+      });
+    }
+
+    function validateresult(number) {
+      if (number < 1 || isNaN(number) || number > 100) {
+        alert("Enter A Valid Num");
+        return false;
+      }
+      prevGess.push(number);
+      if (prevGess.length == 10) {
+        submit.disabled = true;
+        display(`The actual Number is ${NumToGess}`);
+        endGame();
+        return false;
+      }
+      return true;
+    }
+
+    function checkResult(number) {
+      if (NumToGess == number) {
+        display("You Win");
+      } else if (number < NumToGess) {
+        display("Number Is too Low");
+      } else {
+        display("Number is too high");
+      }
+    }
+
+    function display(msg) {
+      gessNum.value = " ";
+      document.querySelector(".overview").textContent = msg;
+      gessRem.textContent = 10 - prevGess.length;
+      document.querySelector("#prevGess").textContent = prevGess.join();
+    }
+
+    function startGame() {
+      NumToGess = Math.floor(Math.random() * 100 + 1);
+      submit.removeAttribute("disabled")
+      PlayGame = true;
+      prevGess =[]
+      
+    }
+    function endGame() {
+      submit.setAttribute("disabled", "")
+      PlayGame = false;
+      const desc =  document.querySelector(".overview")
+     desc.addEventListener("click",()=>startGame())
+     desc.textContent = "Click To start again"
+    }
+  </script>
+</html>
