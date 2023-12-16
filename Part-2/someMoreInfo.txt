@@ -1,0 +1,5 @@
+ javascript is always a syncronous and single treaded lang whuch comes with diffrent runtime which make it dynamic -default 
+
+ mostly js engine like V8, not use sepratly 
+
+ blocking (syncronous) , nonBlocking (async code)

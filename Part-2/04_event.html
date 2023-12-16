@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Event</title>
+  </head>
+  <style>
+    .bg-black {
+      color: #fff;
+      background-color: #141414;
+    }
+    .d-none {
+      display: none;
+    }
+    .d-flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .container {
+      cursor: pointer;
+    }
+    spam {
+      margin: 2px;
+    }
+  </style>
+  <body class="bg-confort">
+    <div class="container d-flex">
+      <spam id="spam1">spam1</spam>
+      <spam id="spam2">spam2</spam>
+      <spam id="spam3">spam3</spam>
+      <!-- Method 1 To add event -->
+      <spam id="spam4" onclick="alert('Spam4')">spam4</spam>
+    </div>
+    <div class="container d-flex">
+      <a href="http://google.com" target="_blank" id="google" rel="noopener noreferrer">
+        Link To google
+      </a>
+    </div>
+  </body>
+  <script>
+    // it didNot get More Information related to clicked event (provide no propegation)
+    // document.getElementById("spam3").onclick = (e) => {
+    //   alert("Spam3");
+    //   console.log(e);
+    // };
+
+    // Use AddEventLissner to Wtch most of the Event
+    // document.getElementById("spam1").addEventListener(
+    //   "click",
+    //   (eventobj) => {
+    //     alert("spam1");
+    //     console.log(eventobj);
+    //   },
+    //   false
+    // );
+
+    // old :-  attached Event(); jQuary - on
+    // Events :-  browser, mouse
+
+    // TODO: Read About these event
+    // type, timeStamp, defaultPrevented
+    // target, toElement srcElement, currentTarget
+    // clintX, clintY, screenX, screenY
+    // altKey, ctrlKey, shiftkey, keyCode
+
+    // Event propegation :- trcking Event form parent Child relation -flow of event
+    // Event Propegation context :- Event Bobbling(default)-(false), eventCapturing
+    //  in bubbling which is default i.e. false track event from child to parent then grand parent
+    // e.g.
+    //  document.getElementsByClassName("container")[0].addEventListener("click",()=>alert("container Clicked ")) // blank
+    //   document.getElementById("spam1").addEventListener("click",()=>alert("spam Clicked ")) // blank
+
+    // same as Above
+    //  document.getElementsByClassName("container")[0].addEventListener("click",()=>alert("container Clicked "), false) // blank
+    //   document.getElementById("spam1").addEventListener("click",()=>alert("spam Clicked "), false) // blank
+
+    // defult -> when callback is given then current node then prrent node then grandparrent
+    // defult -> when directly applyed then execute as per delceration
+
+    // But When it turn to true then
+    // document
+    //   .getElementsByClassName("container")[0]
+    //   .addEventListener("click", () => alert("container Clicked "), true);
+    // document
+    //   .getElementById("spam1")
+    //   .addEventListener("click", () => alert("spam1 Clicked "), true);
+    // it track grandParentEvent then parent event then currentnode event 
+
+    // for stoping this propegation nature which resist js to trck it futher node event 
+    // document
+    //   .getElementsByClassName("container")[0]
+    //   .addEventListener("click", () => alert("container Clicked" ));
+
+    // document
+    //   .getElementById("spam2")
+    //   .addEventListener("click", (e) => {alert("spam2 Clicked ");e.stopPropagation() }, false);
+    //   // now container did not efected by spam2 propegation if contianer is defalut 
+
+
+    // // Restricting default beheavher 
+    // document.getElementById("google").addEventListener("click",(e)=>{
+    //   e.preventDefault()
+    //   window.location("http://www.yahoo.com")
+
+    // })
+
+
+    // Now playing with Event 
+    document.querySelector(".container").addEventListener("click",(e)=>{
+      console.log(`${e.target.id} removed checked`);
+      if (e.target.tagName=="SPAM") {
+        
+        e.target.remove()
+      }
+      // another Way to remove 
+      // e.target.parentNode.removeChild(e.target)
+
+    })
+  </script>
+</html>

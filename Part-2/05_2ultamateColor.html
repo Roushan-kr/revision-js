@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home- Ultimate Color</title>
+  </head>
+  <style>
+    .d-confort {
+      background-color: #121212;
+      color: #fff;
+    }
+    .d-flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      margin-top: 15%;
+    }
+    .container {
+      cursor: pointer;
+    }
+    button {
+      margin: 2px;
+    }
+  </style>
+  <body class="d-confort">
+    <div class="container d-flex">
+      <button type="button">start</button>
+      <button type="button">stop</button>
+    </div>
+  </body>
+  <script>
+    let key = null;
+
+    const getHexColorVal = function () {
+      const hex = "0123456789ABCDEF";
+      let hexVal = "#";
+      for (let i = 0; i < 6; i++) {
+        const temp = hex[Math.floor(Math.random() * 16)];
+        hexVal += temp;
+      }
+      return hexVal;
+    };
+
+    function changeColor(ms) {
+      return setInterval(() => {
+        document.body.style.backgroundColor = getHexColorVal();
+      }, ms);
+    }
+    document.querySelectorAll("button")[0].addEventListener("click", () => {
+      if(!key) key=changeColor(1000)
+      console.log("STARTED");
+      //   disable =true // bug
+    });
+    document.querySelectorAll("button")[1].addEventListener("click", () => {
+      clearInterval(key);
+      key =null
+      console.log("STOPED");
+    });
+  </script>
+</html>
+  
