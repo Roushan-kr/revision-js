@@ -1,1 +1,6 @@
 what is DOMTokenList, HtmlCollection, nodeList
+
+when we use fetch their in browser, browser have also it browser api for fetch and node also is their any conflict when solving this 
+
+node use core implimentation to perform tasks where browser use thrie resoure 
+// new give it's copy by using constructor function

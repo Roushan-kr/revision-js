@@ -1,0 +1,63 @@
+<!-- old legeasy code with AJAX request/ response -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XmlHttpRequest</title>
+  </head>
+  <style>
+    .d-confort {
+      background-color: #121212;
+      color: #fff;
+    }
+    .d-flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      margin-top: 15%;
+    }
+    .container {
+      cursor: pointer;
+    }
+  </style>
+  <body class="d-confort">
+    <pre class="container">
+        Value	State	           Description
+        0	    UNSENT	           Client has been created. open() not called yet.
+        1	    OPENED	           open() has been called.
+        2	    HEADERS_RECEIVED   send() has been called, and headers and status are available.
+        3	    LOADING	           Downloading; responseText holds partial data.
+        4	    DONE	           The operation is complete.
+    </pre>
+    <img src="#" alt="pic " id="img" width="125px">
+  </body>
+  <script>
+    const reqURL = "https://api.github.com/users/roushan-kr";
+    const xhr = new XMLHttpRequest();
+    let data ={}
+    xhr.open("GET", reqURL); // when used it not called to call this
+    xhr.send(); // call .open method 
+    xhr.onreadystatechange = function() {
+      console.log(xhr.readyState); // for tracking status
+      if (xhr.readyState == 4) {
+        console.log(this.responseText);
+        // data=this.responseText
+        data=JSON.parse(this.responseText)
+        // console.log(typeof data);  //string 
+        document.getElementById("img").src = data.avatar_url
+      }
+    };
+
+   // console.log(data.followers); // not work b/c it is ansy 
+    // both work same 
+    // xhr.onreadystatechange = () => {
+    //   console.log(xhr.readyState); // for tracking status
+    //   if (xhr.readyState == 4) {
+    //     console.log(xhr.responseText);
+    //   }
+    // };
+  </script>
+</html>
