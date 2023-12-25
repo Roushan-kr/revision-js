@@ -35,11 +35,11 @@ Polymorphism - same name diff work<br>
  const UserCreate2= function(uName, isLogin){
     this.uName= uName
     this.isLogin = isLogin
-    // if i not retuen this it implicitly return this context id new const used
+    // if i not return this it implicitly return this context id new const used
     // return this
 }
 const u3=new UserCreate2("roushan", true)
-const u4=new UserCreate2("rj", true) // if this function explicitly not return this it return this implictly (if new kwyword used)
+const u4=new UserCreate2("rj", true) // if this function explicitly not return this it return this implictly (if new keyword used)
 // b/t this it also create new instance of that same function
 console.log(u1);
 
